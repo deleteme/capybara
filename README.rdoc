@@ -110,8 +110,7 @@ you should be able to start using Selenium right away.
 
 If desired, you can change Selenium browser to :chrome or :ie:
 
-   require "selenium-webdriver"
-   Selenium::WebDriver.for :chrome
+   Capybara.selenium_browser = :chrome
 
 == Celerity
 

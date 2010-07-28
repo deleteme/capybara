@@ -38,7 +38,7 @@ class Capybara::Driver::Selenium < Capybara::Driver::Base
     def select_option(option)
       option_node = native.find_element(:xpath, ".//option[normalize-space(text())=#{Capybara::XPath.escape(option)}]") || native.find_element(:xpath, ".//option[contains(.,#{Capybara::XPath.escape(option)})]")
       option_node.select
-    rescue 
+    rescue
       options = native.find_elements(:xpath, ".//option").map { |o| "'#{o.text}'" }.join(', ')
       raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
     end
@@ -72,7 +72,7 @@ class Capybara::Driver::Selenium < Capybara::Driver::Base
     def visible?
       native.displayed? and native.displayed? != "false"
     end
-    
+
     def find(locator)
       native.find_elements(:xpath, locator).map { |n| self.class.new(driver, n) }
     end
@@ -89,7 +89,7 @@ class Capybara::Driver::Selenium < Capybara::Driver::Base
 
   def self.driver
     unless @driver
-      @driver = Selenium::WebDriver.for :firefox
+      @driver = Selenium::WebDriver.for Capybara.selenium_browser
       at_exit do
         @driver.quit
       end

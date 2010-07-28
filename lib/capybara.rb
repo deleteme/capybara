@@ -15,6 +15,7 @@ module Capybara
   class << self
     attr_accessor :asset_root, :app_host, :run_server, :default_host
     attr_accessor :default_selector, :default_wait_time, :ignore_hidden_elements
+    attr_accessor :selenium_browser
     attr_accessor :save_and_open_page_path
 
     ##
@@ -70,4 +71,5 @@ Capybara.configure do |config|
   config.default_selector = :css
   config.default_wait_time = 2
   config.ignore_hidden_elements = false
+  config.selenium_browser = :firefox
 end
